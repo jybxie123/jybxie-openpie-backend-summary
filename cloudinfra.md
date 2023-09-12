@@ -29,7 +29,13 @@ This plan is actually the true progress that we run during this application.
 In this level, cloudinfra will get the information stored in the completed template, and will generate a list of plans to apply for the required resources. For example, if we write a virtual machine and we write down some required parameter into the cloudinfra, it will generate a creation plan to inform the apply level that we will apply for a virtual machine with these parameters, and it will still generate some post-apply plans to inform the post-apply level that this kind of resource have some interesting relationships with other resources. In fact, cloudinfra will generate hundreds of plans here to ensure that all the resource we need is planned correctly and all the relationships between different resources are planned correctly.
 What's more, this level will also check for some vulnerabilities that may only be discovered at runtime. Because this level is seen as a dry-run step and we can actually check as many possible errors as we can in this level.
 **Apply level:**
+This level is used to run the process physically. I 
+
+**Provider level**
+This level is used to call the real function of the cloud service provider. I integrated functions from multiple cloud service providers and organized them into similar API, so that the upper level can only give the parameter of the provider and the needed resources. And provider level can find out the correct provider and apply for the specified resources.
+
+**Note:** There is a pity that, because of the great difference between different cloud service providers, and our requirements are not so complicated, the provider level is not implemented through inheritance. And the provider level's detection function is moved to the upper level, which makes it ugly but more easy to complete coding.
 
 **Repair level:**
-
+This level
 
